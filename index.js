@@ -62,7 +62,7 @@ await sendMessage(senderId, aiReply);
 async function sendMessage(senderId, text) {
   const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
-  const url = https://graph.facebook.com/v25.0/me/messages?access_token=${PAGE_ACCESS_TOKEN};
+  const url = `https://graph.facebook.com/v25.0/me/messages?access_token=${PAGE_ACCESS_TOKEN}`;
 
   const response = await fetch(url, {
     method: "POST",
