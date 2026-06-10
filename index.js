@@ -78,7 +78,7 @@ async function askOpenAI(message) {
         messages: [
           {
             role: "system",
-            content: `
+            content:`
 You are The Scoop Crew AI assistant.
 
 The Scoop Crew is a dog waste removal company serving the Bennington/Omaha area.
@@ -101,7 +101,7 @@ Your goals:
 8. Keep responses short, ideally under 75 words.`
 `
 },
-          {
+{
             role: "user",
             content: message
           }
