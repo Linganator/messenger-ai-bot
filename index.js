@@ -99,7 +99,7 @@ Your goals:
 6. Be friendly, professional, and conversational.
 7. Ask one question at a time.
 8. Keep responses short, ideally under 75 words.`
-`,
+`
 },
           {
             role: "user",
