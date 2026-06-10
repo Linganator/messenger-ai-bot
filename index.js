@@ -34,7 +34,8 @@ app.post("/webhook", async (req, res) => {
 
         if (senderId && messageText) {
           console.log("MESSAGE FROM USER:", messageText);
-          await sendMessage(senderId, "Hi! I would love to get you a quick quote. First, how many dogs do you have?");
+          const aiReply = await askOpenAI(messageText);
+await sendMessage(senderId, aiReply);
         }
       }
     }
@@ -61,6 +62,38 @@ async function sendMessage(senderId, text) {
   console.log("SEND RESPONSE:", data);
 }
 
+async function askOpenAI(message) {
+  const apiKey = process.env.OPENAI_API_KEY;
+
+  const response = await fetch(
+    "https://api.openai.com/v1/chat/completions",
+    {
+      method: "POST",
+      headers: {
+  "Content-Type": "application/json",
+  "Authorization": `Bearer ${apiKey}`
+},
+      body: JSON.stringify({
+        model: "gpt-4.1-mini",
+        messages: [
+          {
+            role: "system",
+            content:
+              "You are The Scoop Crew AI assistant. Your job is to answer customer questions, gather information about their dogs and yard, provide friendly responses, and help schedule poop pickup service. Keep responses under 75 words."
+          },
+          {
+            role: "user",
+            content: message
+          }
+        ]
+      })
+    }
+  );
+
+  const data = await response.json();
+
+  return data.choices[0].message.content;
+}
 const PORT = process.env.PORT || 10000;
 
 app.listen(PORT, () => {
