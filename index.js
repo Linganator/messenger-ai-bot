@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 
 app.use(express.json());
+const userSession ={};
 
 const VERIFY_TOKEN = "12345";
 
@@ -35,9 +36,23 @@ app.post("/webhook", async (req, res) => {
         if (senderId && messageText) {
           console.log("MESSAGE FROM USER:", messageText);
 
-          const aiReply = await askOpenAI(messageText);
-          await sendMessage(senderId, aiReply);
-        }
+          if (!userSessions[senderId]) {
+  userSessions[senderId] = [];
+}
+
+userSessions[senderId].push({
+  role: "user",
+  content: messageText
+});
+
+const aiReply = await askOpenAI(userSessions[senderId]);
+
+userSessions[senderId].push({
+  role: "assistant",
+  content: aiReply
+});
+
+await sendMessage(senderId, aiReply);
       }
     }
   }
@@ -63,7 +78,7 @@ async function sendMessage(senderId, text) {
   console.log("SEND RESPONSE:", data);
 }
 
-async function askOpenAI(message) {
+async function askOpenAI(conversationHistory) {
   const apiKey = process.env.OPENAI_API_KEY;
 
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -114,10 +129,7 @@ Your goals:
 8. Keep responses short, ideally under 75 words.
 `
         },
-        {
-          role: "user",
-          content: message
-        }
+          ...conversationHistory
       ]
     })
   });
