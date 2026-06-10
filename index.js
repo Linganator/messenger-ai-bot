@@ -90,9 +90,14 @@ async function askOpenAI(message) {
     }
   );
 
-  const data = await response.json();
+ const data = await response.json();
+console.log("OPENAI RESPONSE:", JSON.stringify(data, null, 2));
 
-  return data.choices[0].message.content;
+if (!data.choices || !data.choices[0]) {
+  return "Sorry, I had a technical issue getting that quote. Please try again in a moment.";
+}
+
+return data.choices[0].message.content;
 }
 const PORT = process.env.PORT || 10000;
 
