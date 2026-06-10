@@ -34,8 +34,9 @@ app.post("/webhook", async (req, res) => {
 
         if (senderId && messageText) {
           console.log("MESSAGE FROM USER:", messageText);
+
           const aiReply = await askOpenAI(messageText);
-await sendMessage(senderId, aiReply);
+          await sendMessage(senderId, aiReply);
         }
       }
     }
@@ -47,7 +48,7 @@ await sendMessage(senderId, aiReply);
 async function sendMessage(senderId, text) {
   const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
-  const url = `https://graph.facebook.com/v25.0/me/messages?access_token=${PAGE_ACCESS_TOKEN}`;
+  const url = https://graph.facebook.com/v25.0/me/messages?access_token=${PAGE_ACCESS_TOKEN};
 
   const response = await fetch(url, {
     method: "POST",
@@ -66,17 +67,17 @@ async function askOpenAI(message) {
   const apiKey = process.env.OPENAI_API_KEY;
 
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-  "Content-Type": "application/json",
-  "Authorization": `Bearer ${apiKey}`
-},
-      body: JSON.stringify({
-        model: "gpt-4.1-mini",
-        messages: [
-          {
-            role: "system",
-            content:`
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": Bearer ${apiKey}
+    },
+    body: JSON.stringify({
+      model: "gpt-4.1-mini",
+      messages: [
+        {
+          role: "system",
+          content: `
 You are The Scoop Crew AI assistant.
 
 The Scoop Crew is a dog waste removal company serving the Bennington/Omaha area.
@@ -96,29 +97,29 @@ Your goals:
 5. Gather their address.
 6. Be friendly, professional, and conversational.
 7. Ask one question at a time.
-8. Keep responses short, ideally under 75 words.`
+8. Keep responses short, ideally under 75 words.
 `
-          },
-          {
-            role: "user",
-            content: message
-          }
-        ]
-      })
-    });
-  
+        },
+        {
+          role: "user",
+          content: message
+        }
+      ]
+    })
+  });
 
- const data = await response.json();
-console.log("OPENAI RESPONSE:", JSON.stringify(data, null, 2));
+  const data = await response.json();
+  console.log("OPENAI RESPONSE:", JSON.stringify(data, null, 2));
 
-if (!data.choices || !data.choices[0]) {
-  return "Sorry, I had a technical issue getting that quote. Please try again in a moment.";
+  if (!data.choices || !data.choices[0]) {
+    return "Sorry, I had a technical issue getting that quote. Please try again in a moment.";
+  }
+
+  return data.choices[0].message.content;
 }
 
-return data.choices[0].message.content;
-}
 const PORT = process.env.PORT || 10000;
 
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
-});
+})
