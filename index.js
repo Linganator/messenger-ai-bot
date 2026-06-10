@@ -58,7 +58,6 @@ await sendMessage(senderId, aiReply);
   }
 
   res.sendStatus(200);
-});
 
 async function sendMessage(senderId, text) {
   const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
