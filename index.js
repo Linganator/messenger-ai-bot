@@ -78,7 +78,7 @@ async function askOpenAI(message) {
         messages: [
           {
             role: "system",
-            content:`
+            content: `
 You are The Scoop Crew AI assistant.
 
 The Scoop Crew is a dog waste removal company serving the Bennington/Omaha area.
