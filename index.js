@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 
 app.use(express.json());
+const VERIFY_TOKEN = "12345";
 
 app.get("/", (req, res) => {
 res.send("Server is running v2");
