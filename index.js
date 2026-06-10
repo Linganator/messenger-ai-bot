@@ -9,9 +9,11 @@ res.send("Server is running v2");
 });
 
 app.get("/webhook", (req, res) => {
-  const mode = req.query["hub.mode"];
-  const token = req.query["hub.verify_token"];
-  const challenge = req.query["hub.challenge"];
+  const mode = req.query["hub.mode"] || req.query.mode;
+const token = req.query["hub.verify_token"] || req.query.verify_token;
+const challenge = req.query["hub.challenge"] || req.query.challenge;
+
+console.log(req.query);
 
   console.log("VERIFY REQUEST:", {
     mode,
