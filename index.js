@@ -34,7 +34,7 @@ app.post("/webhook", async (req, res) => {
 
         if (senderId && messageText) {
           console.log(MESSAGE FROM USER:', messageText);
-          await sendMessage(senderId, "Hi! I would love to get you a quick quote! How many dogs do you have?");
+          await sendMessage(senderId, "Hi! I would love to get you a quick quote. First, how many dogs do you have?");
         }
       }
     }
