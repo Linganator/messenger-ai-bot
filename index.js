@@ -8,17 +8,22 @@ res.send("Server is running v2");
 });
 
 app.get("/webhook", (req, res) => {
-const VERIFY_TOKEN = "12345";
+  const mode = req.query["hub.mode"];
+  const token = req.query["hub.verify_token"];
+  const challenge = req.query["hub.challenge"];
 
-const mode = req.query["hub.mode"];
-const token = req.query["hub.verify_token"];
-const challenge = req.query["hub.challenge"];
+  console.log("VERIFY REQUEST:", {
+    mode,
+    token,
+    challenge,
+    expected: VERIFY_TOKEN
+  });
 
-if (mode && token === VERIFY_TOKEN) {
-return res.status(200).send(challenge);
-}
+  if (mode === "subscribe" && String(token).trim() === String(VERIFY_TOKEN).trim()) {
+    return res.status(200).send(challenge);
+  }
 
-return res.sendStatus(403);
+  return res.sendStatus(403);
 });
 
 app.post("/webhook", (req, res) => {
