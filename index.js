@@ -33,7 +33,8 @@ app.post("/webhook", async (req, res) => {
         const messageText = event.message?.text;
 
         if (senderId && messageText) {
-          await sendMessage(senderId, "Hi! This is The Scoop Crew. How many dogs do you have?");
+          console.log(MESSAGE FROM USER:', messageText);
+          await sendMessage(senderId, "Hi! I would love to get you a quick quote! How many dogs do you have?");
         }
       }
     }
