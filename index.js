@@ -29,14 +29,47 @@ console.log(req.query);
   return res.sendStatus(403);
 });
 
-app.post("/webhook", (req, res) => {
-console.log("WEBHOOK HIT:", req.body);
-res.sendStatus(200);
+app.post("/webhook", async (req, res) => {
+  console.log("WEBHOOK HIT:", JSON.stringify(req.body, null, 2));
+
+  const body = req.body;
+
+  if (body.object === "page") {
+    for (const entry of body.entry || []) {
+      for (const event of entry.messaging || []) {
+        const senderId = event.sender?.id;
+        const messageText = event.message?.text;
+
+        if (senderId && messageText) {
+          console.log("MESSAGE FROM USER:", messageText);
+
+          await sendMessage(
+            senderId,
+            "Hi! This is The Scoop Crew. I can help you get a quote and schedule your first cleanup. How many dogs do you have?"
+          );
+        }
+      }
+    }
+  }
+
+  res.sendStatus(200);
 });
 
-const PORT = process.env.PORT || 10000;
+async function sendMessage(senderId, text) {
+  const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
-app.listen(PORT, () => {
-console.log("Server running on port", PORT);
-});
+  const url = `https://graph.facebook.com/v25.0/me/messages?access_token=${PAGE_ACCESS_TOKEN}`;
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      recipient: { id: senderId },
+      message: { text: text }
+    })
+  });
+
+  const data = await response.json();
+  console.log("SEND RESPONSE:", data);
+}
 
