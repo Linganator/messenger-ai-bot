@@ -65,9 +65,7 @@ async function sendMessage(senderId, text) {
 async function askOpenAI(message) {
   const apiKey = process.env.OPENAI_API_KEY;
 
-  const response = await fetch(
-    "https://api.openai.com/v1/chat/completions",
-    {
+  const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
   "Content-Type": "application/json",
@@ -100,15 +98,15 @@ Your goals:
 7. Ask one question at a time.
 8. Keep responses short, ideally under 75 words.`
 `
-},
-{
+          },
+          {
             role: "user",
             content: message
           }
         ]
       })
-    }
-  );
+    });
+  
 
  const data = await response.json();
 console.log("OPENAI RESPONSE:", JSON.stringify(data, null, 2));
