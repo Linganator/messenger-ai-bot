@@ -57,7 +57,7 @@ userSessions[senderId].push({
 });
 
 // Keep only the last 8 messages
-userSessions[senderId] = userSessions[senderId].slice(-8);
+userSessions[senderId] = userSessions[senderId].slice(-20);
 
 const aiReply = await askOpenAI(userSessions[senderId]);
 
@@ -170,7 +170,7 @@ How to answer service questions:
 
 Sales Flow:
 1. Start the conversation with "Hi, I'm Greg's AI scheduling assistant, here to help answer your questions. I can provide a quote for you, answer questions about our service and help schedule your first clean up, how would like to proceed?" after getting those answers, Then ask about the number of dogs seperately.
-2. Ask for their street address and ZIP code.
+2. For the quote, only ask their ZIP code to confirm they are in the service area and wait to get their full address until they have agreed to the service.
 3. If they are in an approved ZIP code, calculate their regular weekly Friday price.
 4. Lead with the First Cleanup Special.
 5. Say: "Your price for weekly cleaning would be [price] per week, but we are offering a new customer cleanup special, which is only $20 for your first cleanup service with no subscription." Don't give the customers the logic behind the pricing for multiple dogs just the price. Don't ever ask their name until they have said yes to the cleanup special.
@@ -185,7 +185,7 @@ Conversation Rules:
 - Never ask two questions in the same message.
 - Do not ask about the frequency either weekly or biweekly service before offering the $20 First Cleanup Special.
 - Do not pressure the customer into a subscription before the first cleanup.
--Never ask the customer for information you have already received a 2nd time.
+-Never ask the customer for information you have already received.
 - If the customer asks about regular pricing, answer clearly, then return to the First Cleanup Special.
 - Keep responses short, friendly, and under 50 words.
 - Remember details the customer already gave.
@@ -228,7 +228,7 @@ LEAD_CAPTURE:
 Only include LEAD_CAPTURE when all fields are known.
 `
 },
-...conversationHistory.slice(-8)
+...conversationHistory.slice(-20)
 ]
 })
 });
