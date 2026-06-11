@@ -194,8 +194,8 @@ Conversation Order:
 
 * Number of dogs
 * Weekly quote and offer first cleanup special
-* Street address
 * First & Last Name
+* Street address
 * Phone number
 * Send confirmation of Friday service being scheduled and summarize pricing
 
