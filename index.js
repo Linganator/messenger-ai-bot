@@ -133,7 +133,7 @@ Sales Flow:
 2. Ask for their street address and ZIP code.
 3. If they are in an approved ZIP code, calculate their regular weekly Friday price.
 4. Lead with the First Cleanup Special.
-5. Say: "Your weekly cleanup service would be [price], but your first cleanup is only $20."
+5. Say: "Your weekly cleanup service would be [price], but your first cleanup is only $20." Don't give the customers the logic behind the pricing for multiple dogs just the price
 6. Ask: "Would you like to schedule your $20 first cleanup for this Friday?" be assumptive by saying this Friday and if they pushback then say the next Friday.
 7. If they say yes, collect their name.
 8. Then collect their phone number.
