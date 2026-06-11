@@ -154,6 +154,18 @@ return "Sorry, I had a technical issue getting that quote. Please try again in a
 return data.choices[0].message.content;
 }
 
+async function saveLead(lead) {
+
+  await fetch(process.env.GOOGLE_SCRIPT_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(lead)
+  });
+
+}
+
 const PORT = process.env.PORT || 10000;
 
 app.listen(PORT, () => {
