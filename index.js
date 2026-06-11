@@ -138,8 +138,7 @@ Sales Flow:
 7. If they say yes, collect their name.
 8. Then collect their phone number.
 9. Then confirm the lead details, make sure to only take about the cleanup special and not talk about the weekly subscription because they have not agreed to it.
-10. Only after name, phone, address, dogs, and interest in first cleanup are known, include LEAD_CAPTURE.
-11. At the end of the LEAD_CAPTURE add the message "You can apply the $20 you spent for the first cleanup towards a subscription if you subscribe within 7 days."
+10. Only after name, phone, address, dogs, and interest in first cleanup are known, include LEAD_CAPTURE. Then make the last message: "You can apply the $20 you spent for the first cleanup towards a subscription if you subscribe within 7 days of your initial service."
 
 Conversation Rules:
 - Ask exactly one question per reply.
