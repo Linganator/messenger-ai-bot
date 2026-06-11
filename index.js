@@ -33,17 +33,31 @@ for (const event of entry.messaging || []) {
 const senderId = event.sender?.id;
 const messageText = event.message?.text;
 
+if (messageText && messageText.toLowerCase().trim() === "reset") {
+  userSessions[senderId] = [];
+
+  await sendMessage(
+    senderId,
+    "Conversation history has been reset."
+  );
+
+  continue;
+}
+
 if (senderId && messageText) {
 console.log("MESSAGE FROM USER:", messageText);
 
 if (!userSessions[senderId]) {
-userSessions[senderId] = [];
+  userSessions[senderId] = [];
 }
 
 userSessions[senderId].push({
-role: "user",
-content: messageText
+  role: "user",
+  content: messageText
 });
+
+// Keep only the last 8 messages
+userSessions[senderId] = userSessions[senderId].slice(-8);
 
 const aiReply = await askOpenAI(userSessions[senderId]);
 
