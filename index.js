@@ -82,7 +82,7 @@ console.log("SEND RESPONSE:", data);
 async function askOpenAI(conversationHistory) {
 const apiKey = process.env.OPENAI_API_KEY;
 
-const response = await fetch("https://api.openai.com/v1/chat/completions";, {
+const response = await fetch(`https://api.openai.com/v1/chat/completions`;, {
 method: "POST",
 headers: {
 "Content-Type": "application/json",
