@@ -47,12 +47,29 @@ content: messageText
 
 const aiReply = await askOpenAI(userSessions[senderId]);
 
+let messageToCustomer = aiReply;
+
+if (aiReply.includes("LEAD_CAPTURE:")) {
+  const parts = aiReply.split("LEAD_CAPTURE:");
+  messageToCustomer = parts[0].trim();
+
+  try {
+    const leadJson = parts[1].trim();
+    const lead = JSON.parse(leadJson);
+
+    await saveLead(lead);
+    console.log("LEAD SAVED:", lead);
+  } catch (error) {
+    console.error("LEAD SAVE ERROR:", error);
+  }
+}
+
 userSessions[senderId].push({
-role: "assistant",
-content: aiReply
+  role: "assistant",
+  content: messageToCustomer
 });
 
-await sendMessage(senderId, aiReply);
+await sendMessage(senderId, messageToCustomer);
 }
 }
 }
