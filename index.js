@@ -134,7 +134,7 @@ Sales Flow:
 3. If they are in an approved ZIP code, calculate their regular weekly Friday price.
 4. Lead with the First Cleanup Special.
 5. Say: "Your weekly cleanup service would be [price], but your first cleanup is only $20."
-6. Ask: "Would you like to schedule your $20 first cleanup?"
+6. Ask: "Would you like to schedule your $20 first cleanup for this Friday?" be assumptive by saying this Friday and if they pushback then say the next Friday.
 7. If they say yes, collect their name.
 8. Then collect their phone number.
 9. Then confirm the lead details, make sure to only take about the cleanup special and not talk about the weekly subscription because they have not agreed to it.
