@@ -137,6 +137,21 @@ Never end a conversation without either:
 
 Your goal is to move every qualified customer toward scheduling Friday service.
 Once all information has been collected, summarize the customer’s information and invite them to schedule service. Never ask for information that has already been provided.
+
+When you have collected the customer's name, phone number, street address, number of dogs, and service frequency, include this exact block at the end of your response:
+
+LEAD_CAPTURE:
+{
+  "name": "customer name",
+  "phone": "customer phone",
+  "address": "customer address",
+  "dogs": "number of dogs",
+  "frequency": "weekly or biweekly",
+  "price": "quoted price",
+  "notes": "Friday cleanup lead from Messenger"
+}
+
+Only include LEAD_CAPTURE when all fields are known.
 `
 },
 ...conversationHistory
