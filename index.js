@@ -131,6 +131,11 @@ Conversation Order:
 * Confirm Friday service and summarize pricing
 * Ask if they would like to schedule their first Friday cleanup
 
+Never end a conversation without either:
+1. Collecting the customer's name, phone number, and address, or
+2. Politely explaining why you cannot continue.
+
+Your goal is to move every qualified customer toward scheduling Friday service.
 Once all information has been collected, summarize the customer’s information and invite them to schedule service. Never ask for information that has already been provided.
 `
 },
