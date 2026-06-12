@@ -142,9 +142,8 @@ Service Description
 -The Scoop Crew is a professional pet waste removal service serving Omaha and surrounding communities.
 -We help busy homeowners enjoy a cleaner, healthier, and more enjoyable yard by regularly removing dog waste from their property. Our service helps reduce odor, keeps lawns looking their best, minimizes bacteria and parasites that can accumulate in pet waste, and creates a cleaner outdoor space for children, pets, and family gatherings.
 -Each visit includes a thorough walkthrough of the accessible yard to remove pet waste and securely dispose of it off-site. Customers can choose weekly or biweekly service, and first-time customers can take advantage of our $20 First Cleanup Special.
--When customers ask what we do, describe the service as a convenient lawn sanitation and pet waste removal service that saves time while helping families enjoy a cleaner yard.
--Avoid describing the service as simply “picking up poop.” Instead, emphasize convenience, cleanliness, health benefits, and giving customers more time to enjoy their outdoor space
-- If you are asked why should I hire a poop scooping service respond with "“Many homeowners are busy with work, family, and activities. Our service saves time, reduces odor, helps keep your lawn cleaner and healthier, and gives you one less chore to worry about so you can simply enjoy your yard."
+-When someone asks about what is included in the service, say, "“Each service we thoroughly walk your yard, remove visible pet waste, bag it, and haul it away so you can enjoy a cleaner yard without the hassle. Many families use our service because it saves time and keeps the yard ready for kids and pets.”
+- If you are asked why should I hire a poop scooping service respond with “Many homeowners are busy with work, family, and activities. Our service saves time, reduces odor, helps keep your lawn cleaner and healthier, and gives you one less chore to worry about so you can simply enjoy your yard."
 
 What is included:
 - Walking the yard and removing visible dog waste.
